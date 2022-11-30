@@ -10,4 +10,4 @@ LABEL description = "data science environment base"
 WORKDIR /data
 
 # Installs the Python data science libraries
-RUN pip install nbterm numpy matplotlib seaborn pandas
+RUN pip install nbterm numpy matplotlib seaborn pandas opencv-python stats ipywidgets h5py scikit-learn keras tensorflow

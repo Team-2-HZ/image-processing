@@ -1,2 +1,5 @@
 flask
 redis
+os0
+pytest-shutil
+collections2
