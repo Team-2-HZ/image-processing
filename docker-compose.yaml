@@ -2,18 +2,19 @@ version: "4"
 services:
   redis:
     image: redis:alpine
-    depends_on:
-      - web
-  web:
-    image: python:3.10-alpine
-    volumes:
-      - ./python-processing/:/usr/src/app
-    working_dir: /usr/src/app
+  data-science-services:
+    build: ./python-processing
     environment:
       - PYTHONPATH=user/src/app
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_DEBUG=1
-    command: sh -c "apk add --no-cache gcc musl-dev linux-headers && pip3 install --upgrade pip && pip3 -v install -r requirements.txt && flask run"
+    volumes:
+      - ./python-processing/:/data/bin/bash
+    working_dir: /data/bin/bash
+    command: sh -c " pip install --upgrade pip && pip install -r pyproject.toml && flask run"
     ports:
       - "8000:5000"
+networks:
+  default:
+    name: my-network
