@@ -19,5 +19,7 @@ cache = redis.Redis(host='redis', port=6379)
 #             time.sleep(0.5)
 
 @app.route('/')
-def hello():
-    return process_food()
+def hello( ):
+    # display values from process_food function as a string
+    return str(process_food())
+    
