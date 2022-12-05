@@ -1,4 +1,5 @@
 flask
+waitress
 redis
 os0
 pytest-shutil
